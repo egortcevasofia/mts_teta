@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
+* {
+	margin: 0; /* Убираем внешние отступы */
+	padding: 0; /* Убираем внутренние отступы */
+}
+
+body {
+	font-size: 16px; /* Задаём размер шрифта для всей страницы */
+	font-family: 'Roboto', sans-serif; /* Задаём шрифт для всей страницы */
+	background-color: #34495E; /* Задаём цвет для всей страницы */
+	color: #fff; /* Задаём цвет текста для всей страницы */
+	display: flex; /* Задаём тип отображения элемента для выравнивания того, что внутри */
+}
+
+								/* user_info */
+/* Контейнер */
+form {
+	width: 600px; /* Задаём ширину контейнера */
+	margin: auto; /* Выравниваем контейнер по центру */
+	display: flex; /* Задаём тип отображения элемента для выравнивания того, что внутри */
+	flex-direction: column; /* Задаём тип выравнивания: столбцы */
+	justify-content: flex-start; /* Задаём тип выравнивания: от начала */
+}
+
+/* Заголовок */
+h1 {
+	font-size: 2em; /* Задаём размер шрифта заголовка относительно заданного ранее в два раза */
+	margin-bottom: 10px; /* Задаём отступ снизу */
+}
+
+/* Поле текст */
+input[type="text"] {
+	width: 100%; /* Задаём ширину */
+	height: 20px; /* Задаём высоту */
+	margin-bottom: 20px; /* Задаём отступ снизу */
+}
+
+/* Поле пароль */
+input[type="password"] {
+	width: 100%; /* Задаём ширину */
+	height: 20px; /* Задаём высоту */
+}
+
+/* Текст под полем пароля */
+.tip {
+	margin-bottom: 20px; /* Задаём ширину */
+	font-size: 0.8em;
+	color: #e2e2e2;
+}
+
+/* Поле ввода текста */
+textarea {
+	margin-bottom: 20px; /* Задаём отступ снизу */
+}
+
+/* Кнопка */
+button {
+	width: 70px; 
+	height: 35px;
+	margin-left: 89%;
+	background-color: #52BE80;
+	color: #fff;
+	border: none; /* Убираем рамку */
+}
+
+								/* select_course */
+/* Подписис всех полей */
+label {
+	margin-bottom: 5px;
+}
+
+/* Выпадающий список */
+select {
+	width:100%;
+    height:30px;
+    border:1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+								/* courses */
+/* Таблица */
+table {
+	margin-top: 20px;
+	background-color: #D1F2EB;
+	width: 100%;
+	color: #000;
+	height: 200px;
+}
+
+/* Верхняя строка-шапка */
+th {
+	text-align: left;
+}
+
+/* Кнопки внутри таблицы */
+table button {
+	margin-left: 0;
+	margin-bottom: 10px;
+}
+
+								/* profile */
+/* Кнопки на странице профиль */
+.profile_btn {
+	width: 150px;
+	margin-left: 0;
+	margin-bottom: 20px;
+}
+
+/* Поле загрузки файла */
+input[type="file"] {
+	width: 100%;
+	margin-bottom: 10px;
+	height: 20px;
+	background-color: #fff;
+	color: #000;
+}
+
+								/* create_course */
+.red {
+	font-size: 0.8em;
+	color: red;
+	margin-top: -20px;
+	margin-bottom: 10px;
+}
+
+.table_name {
+	margin-top: 20px;
+	margin-bottom: -20px;
+}
+
+.create_table {
+	height: 120px;
+}
+
+								/* course_not_found */
+.error {
+	width: 100%;
+	border: 1px solid #C0392B;
+	padding: 10px;
+	background-color: #E6B0AA;
+	color: #C0392B;
+	border-radius: 5px;
+}
