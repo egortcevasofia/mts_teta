@@ -11,16 +11,20 @@ body {
 	background-color: #34495E; /* Задаём цвет для всей страницы */
 	color: #fff; /* Задаём цвет текста для всей страницы */
 	display: flex; /* Задаём тип отображения элемента для выравнивания того, что внутри */
+	flex-direction: column;
 }
 
 								/* user_info */
 /* Контейнер */
 form {
-	width: 600px; /* Задаём ширину контейнера */
+	/*width: 600px; !* Задаём ширину контейнера *!*/
 	margin: auto; /* Выравниваем контейнер по центру */
 	display: flex; /* Задаём тип отображения элемента для выравнивания того, что внутри */
 	flex-direction: column; /* Задаём тип выравнивания: столбцы */
 	justify-content: flex-start; /* Задаём тип выравнивания: от начала */
+}
+.search-form {
+	width: 600px; /* Задаём ширину контейнера */
 }
 
 /* Заголовок */
@@ -87,6 +91,11 @@ table {
 	color: #000;
 	height: 200px;
 }
+.main-table {
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
 
 /* Верхняя строка-шапка */
 th {
@@ -101,7 +110,7 @@ table button {
 
 								/* profile */
 /* Кнопки на странице профиль */
-.profile_btn {
+.profile-btn {
 	width: 150px;
 	margin-left: 0;
 	margin-bottom: 20px;
@@ -124,12 +133,12 @@ input[type="file"] {
 	margin-bottom: 10px;
 }
 
-.table_name {
+.table-name {
 	margin-top: 20px;
 	margin-bottom: -20px;
 }
 
-.create_table {
+.create-table {
 	height: 120px;
 }
 
@@ -141,4 +150,27 @@ input[type="file"] {
 	background-color: #E6B0AA;
 	color: #C0392B;
 	border-radius: 5px;
+}
+
+header {
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+	/*width: 100%;*/
+	background: #ccc;
+	padding: 15px;
+	margin-bottom: 30px;
+}
+header span {
+	padding: 0 15px;
+}
+header span a {
+	color: #000;
+}
+header span a:active, header span a:focus {
+	color:red;
+}
+.validation-error {
+	color: red;
 }

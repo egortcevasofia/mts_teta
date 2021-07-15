@@ -1,39 +1,50 @@
 <!DOCTYPE html>
 <html lang="ru">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Информация о пользователе</title> <!-- Задаём название страницы -->
-	<link rel="stylesheet" href="style.css"> <!-- Подключаем файл стилей -->
+	<link rel="stylesheet" th:href="@{/style.css}"> <!-- Подключаем файл стилей -->
 </head>
+
+
+
 <body>
-		<form action=""> <!-- Создаём форму -->
+
+<header th:replace="fragments/header :: header"></header>
+
+	<form class="search-form" action=""> <!-- Создаём форму -->
 			<center><h1>Курсы</h1></center> <!-- Создаём заголовок и центрируем его -->
-			<label for="search">Поиск по названию</label> <!-- Даём название следующему полю -->
-			<input type="text" id="search" name="search"> <!-- Создаём поле текст -->
-
-			<button>Создать</button> <!-- Создаём кнопку -->
-
-			<table border="0" width="100%" cellpadding="0"> <!-- Создаём таблицу -->
-				<tr> <!-- Создаём верхнюю строку -->
-					<th>id</th>
-					<th>Название</th>
-					<th>Автор</th>
-					<th>Назначить/удалить</th>
-				</tr>
-				<tr> <!-- Создаём ещё одну строку -->
-					<td>1</td>
-					<td>Название курса</td>
-					<td>Автор курса</td>
+			<label for="titlePrefix" class="inline">Filter by title</label> <!-- Даём название следующему полю -->
+			<input type="text" id="titlePrefix" class="inline" name="titlePrefix" th:value="${param.titlePrefix}"/> <!-- Создаём поле текст -->
+			<button>Apply</button> <!-- Создаём кнопку -->
+	</form>
+			<table border="0" cellpadding="0" class="main-table"> <!-- Создаём таблицу -->
+					<thead>
+					<tr> <!-- Создаём верхнюю строку -->
+						<th>Id</th>
+						<th>Title</th>
+						<th>Author</th>
+						<th>Action</th>
+					</tr>
+					</thead>
+				<tbody>
+				<tr th:each="course : ${courses}">
+					<td th:text="${course.id}">1</td>
 					<td>
-						<button>Удалить</button><br> <!-- Создаём кнопку и делаем перенос на следующую строку -->
-						<button>Назначить</button> <!-- Создаём кнопку -->
+						<a th:text="${course.title}" th:href="@{/course/{id}(id = ${course.id})}">Course name</a>
+					</td>
+					<td th:text="${course.author}">Course author</td>
+					<td>
+						<form th:method="delete" th:action="@{/course/{id}(id = ${course.id})}">
+							<button class="table_button" type="submit">Удалить</button>
+						</form>
+
 					</td>
 				</tr>
-				<tr> <!-- Создаём ещё одну строку -->
-					<td>Нет данных</td>
-				</tr>
+				</tbody>
 			</table>
-		</form>
+
 </body>
 </html>
