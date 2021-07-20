@@ -50,9 +50,7 @@ public class TitleCaseValidator implements ConstraintValidator<TitleCase, String
     }
 
     public Boolean isValidAny(String title) {
-        return GeneralRules.isValidNewLine(title)
-                && GeneralRules.isValidTab(title)
-                && GeneralRules.isValidCarriage(title)
+        return GeneralRules.isValidNewLineTabCarriege(title)
                 && GeneralRules.isValidMoreThanOneSpace(title)
                 && GeneralRules.isValidFirstLastSpace(title)
                 && GeneralRules.isValidEnglishRussian(title)

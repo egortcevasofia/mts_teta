@@ -8,31 +8,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GeneralRulesTest {
     @Test
-    public void test_isValidNeLine(){
-        assertEquals(GeneralRules.isValidNewLine("qwerty/n"), false);
-        assertEquals(GeneralRules.isValidNewLine("qwerty//n"), false);
-        assertEquals(GeneralRules.isValidNewLine("/nqwerty"), false);
-        assertEquals(GeneralRules.isValidNewLine("qwerty/t"), true);
-        assertEquals(GeneralRules.isValidNewLine("qwerty"), true);
+    public void test_isValidNeLineTabCarriege(){
+        assertEquals(GeneralRules.isValidNewLineTabCarriege("qwerty/n"), false);
+        assertEquals(GeneralRules.isValidNewLineTabCarriege("qwerty//n"), false);
+        assertEquals(GeneralRules.isValidNewLineTabCarriege("/nqwerty"), false);
+        assertEquals(GeneralRules.isValidNewLineTabCarriege("qwerty/t"), false);
+        assertEquals(GeneralRules.isValidNewLineTabCarriege("qwerty"), true);
+        assertEquals(GeneralRules.isValidNewLineTabCarriege("qwerty//r"), false);
+        assertEquals(GeneralRules.isValidNewLineTabCarriege("/rqwerty"), false);
+        assertEquals(GeneralRules.isValidNewLineTabCarriege("qwerty/n"), false);
+        assertEquals(GeneralRules.isValidNewLineTabCarriege("qwerty"), true);
+        assertEquals(GeneralRules.isValidNewLineTabCarriege("qwerty//t"), false);
+        assertEquals(GeneralRules.isValidNewLineTabCarriege("/tqwerty"), false);
+        assertEquals(GeneralRules.isValidNewLineTabCarriege("qwerty"), true);
     }
 
-    @Test
-    public void test_isValidTab(){
-        assertEquals(GeneralRules.isValidTab("qwerty/t"), false);
-        assertEquals(GeneralRules.isValidTab("qwerty//t"), false);
-        assertEquals(GeneralRules.isValidTab("/tqwerty"), false);
-        assertEquals(GeneralRules.isValidTab("qwerty/n"), true);
-        assertEquals(GeneralRules.isValidTab("qwerty"), true);
-    }
-
-    @Test
-    public void test_isValidCarriage(){
-        assertEquals(GeneralRules.isValidCarriage("qwerty/r"), false);
-        assertEquals(GeneralRules.isValidCarriage("qwerty//r"), false);
-        assertEquals(GeneralRules.isValidCarriage("/rqwerty"), false);
-        assertEquals(GeneralRules.isValidCarriage("qwerty/n"), true);
-        assertEquals(GeneralRules.isValidCarriage("qwerty"), true);
-    }
 
     @Test
     public void test_isValidMoreThanOneSpace(){

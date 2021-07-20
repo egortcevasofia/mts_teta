@@ -17,7 +17,7 @@ public class EnglishRules {
         String[] words = title.split(" ");
         Set<String> prepositionSet = new HashSet<String>(Arrays.asList("A", "But",
                 "For", "Or", "Not", "The", "An"));
-        for (int i = 0; i < words.length - 1; i++) {
+        for (int i = 1; i < words.length - 1; i++) {
             if (prepositionSet.contains(words[i])) {
                 return false;
             }
