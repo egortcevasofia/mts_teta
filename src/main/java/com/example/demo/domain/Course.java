@@ -2,16 +2,24 @@ package com.example.demo.domain;
 
 import com.example.demo.annotation.TitleCase;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+@Entity
+@Table(name = "courses")
 public class Course {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank(message = "Course author has to be filled")
+    @Column
     private String author;
 
     @NotBlank(message = "Course title has to be filled")
     @TitleCase
+    @Column
     private String title;
 
     public Course() {

@@ -28,7 +28,7 @@ public class CourseController {
 
     @GetMapping
     public String courseTable(Model model, @RequestParam(name = "titlePrefix", required = false) String titlePrefix) {
-        model.addAttribute("courses", courseService.findByTitleWithPrefix(titlePrefix == null ? "" : titlePrefix));
+        model.addAttribute("courses", courseService.findByTitleLike(titlePrefix + "%"));
         model.addAttribute("activePage", "courses");
         return "courses";
     }
