@@ -15,10 +15,10 @@ public class EnglishRulesTest {
 
     @Test
     public void test_hasCapitalLetterPreposition(){
-        assertEquals(EnglishRules.isValidCapitalLetterPreposition("Qwerty For e Or Qwerty"), true);
-        assertEquals(EnglishRules.isValidCapitalLetterPreposition("Qwerty e An Qwerty"), true);
+        assertEquals(EnglishRules.isValidCapitalLetterPreposition("Qwerty For e Or Qwerty"), false);
+        assertEquals(EnglishRules.isValidCapitalLetterPreposition("Qwerty e An Qwerty"), false);
         assertEquals(EnglishRules.isValidCapitalLetterPreposition("But Qwerty e Qwerty"), true);
-        assertEquals(EnglishRules.isValidCapitalLetterPreposition("Qwerty e or Qwerty"), false);
+        assertEquals(EnglishRules.isValidCapitalLetterPreposition("Qwerty e or Qwerty"), true);
     }
 
     @Test
