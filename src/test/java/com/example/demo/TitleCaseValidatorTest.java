@@ -40,5 +40,16 @@ public class TitleCaseValidatorTest {
         assertEquals(titleCaseValidator.isValidEnglish("Logical An Task"), false);
     }
 
+    @Test
+    void shouldReturnFalseIfStringIsEmpty() {
+        assertEquals(titleCaseValidator.isValid("", null), false);
+    }
+
+    @Test
+    void shouldReturnFalseIfStringIsNull() {
+        assertEquals(titleCaseValidator.isValid(null, null), false);
+    }
+
+
 
 }

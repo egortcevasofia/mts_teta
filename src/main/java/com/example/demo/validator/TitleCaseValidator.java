@@ -24,6 +24,9 @@ public class TitleCaseValidator implements ConstraintValidator<TitleCase, String
 
     @Override
     public boolean isValid(String title, ConstraintValidatorContext context) {
+        if (title == null || context == null){
+            return false;
+        }
         if (language.equals(Language.RU)) {
             return isValidRussian(title);
         }
@@ -31,7 +34,7 @@ public class TitleCaseValidator implements ConstraintValidator<TitleCase, String
             return isValidEnglish(title);
         }
         if (language.equals(Language.ANY)) {
-            return isValidAny(title);
+            return isValidAny(title) && (isValidRussian(title) || isValidEnglish(title));
         }
         return false;
     }
