@@ -17,8 +17,8 @@ public class CourseService {
         this.courseRepository = courseRepository;
     }
 
-    public List<Course>  findByTitleWithPrefix(String prefix) {
-       return courseRepository.findByTitleWithPrefix(prefix);
+    public List<Course>  findByTitleLike(String prefix) {
+       return courseRepository.findByTitleLike(prefix);
     }
 
     public Course findById(long id) {
@@ -32,6 +32,6 @@ public class CourseService {
     }
 
     public void delete(long id) {
-       courseRepository.delete(id);
+       courseRepository.deleteCourseById(id);
     }
 }
