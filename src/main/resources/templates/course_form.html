@@ -28,6 +28,23 @@
     <div>
         <button type="submit">Submit</button>
     </div>
+
+    <div class="container">
+        <form>
+            <!-- Это форма для ввода названия и автора продукта. Она останется неизменной.
+            Просто переместится внутрь контейнера <div> -->
+        </form>
+
+        <div th:unless="${lessons == null}">
+            <div>
+                <a th:href="@{/lesson/new(course_id = ${course.id})}">New lesson</a>
+            </div>
+
+            <!-- Здесь должна быть таблица с уроками, которые входят в данный курс -->
+        </div>
+    </div>
+
+
 </form>
 
 </body>
