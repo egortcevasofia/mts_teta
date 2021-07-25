@@ -19,24 +19,24 @@ public class Lesson {
     @Column
     private String description;
 
-    @OneToOne
-    @JoinColumn(name="user_id", nullable=false)
-    private User updatedUser;
-
-    private LocalDateTime updatedTime;
-
     @ManyToOne(optional = false)
     private Course course;
+
+//    @OneToOne
+//    @JoinColumn(name="user_id", nullable=false)
+//    private User updatedUser;
+//
+//    private LocalDateTime updatedTime;
+
+
 
     public Lesson() {
     }
 
-    public Lesson(Long id, String title, String description, User updatedUser, LocalDateTime updatedTime, Course course) {
+    public Lesson(Long id, String title, String description, Course course) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.updatedUser = updatedUser;
-        this.updatedTime = updatedTime;
         this.course = course;
     }
 
@@ -62,22 +62,6 @@ public class Lesson {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public User getUpdatedUser() {
-        return updatedUser;
-    }
-
-    public void setUpdatedUser(User updatedUser) {
-        this.updatedUser = updatedUser;
-    }
-
-    public LocalDateTime getUpdatedTime() {
-        return updatedTime;
-    }
-
-    public void setUpdatedTime(LocalDateTime updatedTime) {
-        this.updatedTime = updatedTime;
     }
 
     public Course getCourse() {

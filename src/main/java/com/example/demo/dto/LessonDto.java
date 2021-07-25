@@ -24,6 +24,12 @@ public class LessonDto {
         this.courseId = courseId;
     }
 
+    public LessonDto(Long id, String title, Long courseId) {
+        this.id = id;
+        this.title = title;
+        this.courseId = courseId;
+    }
+
     public Long getId() {
         return id;
     }
