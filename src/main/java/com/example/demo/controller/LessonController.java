@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.domain.Lesson;
 import com.example.demo.dto.LessonDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

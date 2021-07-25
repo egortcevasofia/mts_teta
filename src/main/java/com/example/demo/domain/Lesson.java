@@ -1,6 +1,8 @@
 package com.example.demo.domain;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "lessons")
@@ -15,7 +17,13 @@ public class Lesson {
 
     @Lob
     @Column
-    private String text;
+    private String description;
+
+    @OneToOne
+    @JoinColumn(name="user_id", nullable=false)
+    private User updatedUser;
+
+    private LocalDateTime updatedTime;
 
     @ManyToOne(optional = false)
     private Course course;
@@ -23,9 +31,12 @@ public class Lesson {
     public Lesson() {
     }
 
-    public Lesson(String title, String text, Course course) {
+    public Lesson(Long id, String title, String description, User updatedUser, LocalDateTime updatedTime, Course course) {
+        this.id = id;
         this.title = title;
-        this.text = text;
+        this.description = description;
+        this.updatedUser = updatedUser;
+        this.updatedTime = updatedTime;
         this.course = course;
     }
 
@@ -45,12 +56,28 @@ public class Lesson {
         this.title = title;
     }
 
-    public String getText() {
-        return text;
+    public String getDescription() {
+        return description;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public User getUpdatedUser() {
+        return updatedUser;
+    }
+
+    public void setUpdatedUser(User updatedUser) {
+        this.updatedUser = updatedUser;
+    }
+
+    public LocalDateTime getUpdatedTime() {
+        return updatedTime;
+    }
+
+    public void setUpdatedTime(LocalDateTime updatedTime) {
+        this.updatedTime = updatedTime;
     }
 
     public Course getCourse() {

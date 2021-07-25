@@ -1,55 +1,60 @@
 <!DOCTYPE html>
-<html lang="ru">
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Информация о пользователе</title> <!-- Задаём название страницы -->
-	<link rel="stylesheet" th:href="@{/style.css}"> <!-- Подключаем файл стилей -->
+	<link rel="stylesheet" th:href="@{/style.css}">
+	<title>Courses</title>
 </head>
 
-
-
 <body>
-
 <header th:replace="fragments/header :: header"></header>
-
-	<form class="search-form" action=""> <!-- Создаём форму -->
-			<center><h1>Курсы</h1></center> <!-- Создаём заголовок и центрируем его -->
-			<label for="titlePrefix" class="inline">Filter by title</label> <!-- Даём название следующему полю -->
-			<input type="text" id="titlePrefix" class="inline" name="titlePrefix" th:value="${param.titlePrefix}"/> <!-- Создаём поле текст -->
-			<button>Apply</button> <!-- Создаём кнопку -->
+<div class="block">
+	<h1>Курсы</h1>
+</div>
+<div class="block">
+	<form>
+		<label for="titlePrefix">Поиск по названию:</label>
+		<input type="text" id="titlePrefix" name="titlePrefix" th:value="${param.titlePrefix}">
+		<button class="submit-button">Найти</button>
 	</form>
-			<table border="0" cellpadding="0" class="main-table"> <!-- Создаём таблицу -->
-					<thead>
-					<tr> <!-- Создаём верхнюю строку -->
-						<th>Id</th>
-						<th>Title</th>
-						<th>Author</th>
-						<th>Action</th>
-					</tr>
-					</thead>
-				<tbody>
-				<tr th:unless="${courses.empty}" th:each="course : ${courses}">
+</div>
 
-					<td th:text="${course.id}">1</td>
-					<td>
-						<a th:text="${course.title}" th:href="@{/course/{id}(id = ${course.id})}">Course name</a>
-					</td>
-					<td th:text="${course.author}">Course author</td>
-					<td>
-						<form th:method="delete" th:action="@{/course/{id}(id = ${course.id})}">
-							<button class="table_button" type="submit">Удалить</button>
-						</form>
 
-					</td>
-				</tr>
-				<tr th:if="${courses.empty}" >
-					<td colspan="4">No data</td>
-				</tr>
+<div class="block">
+	<a class="table_link" th:href="@{course/new}">Добавить курс</a>
+	<table>
+		<thead>
+		<tr>
+			<th>Id</th>
+			<th>Название</th>
+			<th>Автор</th>
+			<th>Назначить/удалить</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:unless="${courses.empty}" th:each ="course : ${courses}">
+			<td th:text="${course.id}">1</td>
+			<td>
+				<a th:text="${course.title}" th:href="@{/course/{id}(id = ${course.id})}">Course name</a>
+			</td>
+			<td th:text="${course.author}">Course Author</td>
+			<td>
+				<form class="inline" th:method="get" th:action="@{/course/{id}/assign(id = ${course.id})}">
+					<button class="table-button" type="submit">Назначить</button>
+				</form>
 
-				</tbody>
-			</table>
+				<form th:method="delete" th:action="@{/course/{id}(id = ${course.id})}">
+					<button class="table-button" type="submit">Удалить</button>
+				</form>
+			</td>
+		</tr>
+		</tbody>
 
+		<tr th:if="${courses.empty}">
+			<td colspan="4">Нет данных</td>
+		</tr>
+	</table>
+</div>
 </body>
 </html>
