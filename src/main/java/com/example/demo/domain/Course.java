@@ -33,21 +33,6 @@ public class Course {
     @ManyToMany
     private Set<User> users;
 
-//    private String description;
-//
-//    private Integer durationWeeks;
-//
-//    private BigDecimal avgRating;
-//
-//    @OneToMany
-//    private Set<Category> categories;
-//
-//    @OneToOne
-//    @JoinColumn(name="user_id", nullable=false)
-//    private User updatedUser;
-//    private LocalDateTime updatedTime;
-//
-//    private Boolean isDeleted;
 
     public Course() {
     }

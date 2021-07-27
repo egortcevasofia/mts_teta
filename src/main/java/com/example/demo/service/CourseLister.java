@@ -20,6 +20,6 @@ public class CourseLister {
 
     public List<Course> coursesByAuthor(String name) {
         List<Course> allCourses = repository.findAll();
-        return Collections.emptyList();//allCourses.stream().filter(course -> course.get().equals(name)).collect(Collectors.toList());
+        return Collections.emptyList();
     }
 }

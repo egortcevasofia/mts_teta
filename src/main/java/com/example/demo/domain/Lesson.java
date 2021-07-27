@@ -22,11 +22,7 @@ public class Lesson {
     @ManyToOne(optional = false)
     private Course course;
 
-//    @OneToOne
-//    @JoinColumn(name="user_id", nullable=false)
-//    private User updatedUser;
-//
-//    private LocalDateTime updatedTime;
+
 
 
 

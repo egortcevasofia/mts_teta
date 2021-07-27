@@ -19,8 +19,9 @@ public class CourseService {
     }
 
     public List<Course>  findByTitleLike(String prefix) {
-       return courseRepository.findByTitleLike(prefix);
+       return courseRepository.findByTitleLike(prefix + "%" );
     }
+
 
     public Course findById(long id) {
         return courseRepository.

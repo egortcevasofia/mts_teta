@@ -1,21 +1,15 @@
-<!--<!doctype html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--&lt;!&ndash;<head>&ndash;&gt;-->
-<!--&lt;!&ndash;    <link rel="stylesheet"  th:href="@{/static/style.css}">&ndash;&gt;-->
-<!--&lt;!&ndash;</head>&ndash;&gt;-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th ="http://thymeleaf.org">
+<link rel="stylesheet" th:href="@{../style.css}">
 
-<header id="header" th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml" >
-            <span th:classappend="${activePage == 'courses'} ? active">
-                <a th:href="@{/course}">Courses</a>
-            </span>
-    <span th:classappend="${activePage == 'users'} ? active">
-                <a th:href="@{/user}">User</a>
-            </span>
 
-    <span>
-        <a th:href="@{course/new}">New course</a>
-    </span>
-
+<header>
+	<span class="header-item" th:classappend="${activePage =='courses'} ? active">
+		<a th:href="@{/course}">Курсы</a>
+	</span>
+    <span class="header-item" th:classappend="${activePage =='users'} ? active">
+		<a th:href="@{/user}">Пользователи</a>
+	</span>
 </header>
 
-<!--</html>-->
+</html>

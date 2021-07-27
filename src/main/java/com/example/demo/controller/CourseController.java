@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.domain.Course;
 import com.example.demo.domain.User;
-import com.example.demo.dto.CourseMapper;
 import com.example.demo.service.CourseService;
 import com.example.demo.service.LessonService;
 import com.example.demo.service.UserService;
@@ -21,25 +20,27 @@ import javax.validation.Valid;
 public class CourseController {
 
     private final CourseService courseService;
-    private final CourseMapper courseMapper;
     private final LessonService lessonService;
     private final UserService userService;
 
 
     @Autowired
-    public CourseController(CourseService courseService, CourseMapper courseMapper, LessonService lessonService, UserService userService) {
+    public CourseController(CourseService courseService, LessonService lessonService, UserService userService) {
         this.courseService = courseService;
-        this.courseMapper = courseMapper;
         this.lessonService = lessonService;
         this.userService = userService;
     }
 
     @GetMapping
     public String courseTable(Model model, @RequestParam(name = "titlePrefix", required = false) String titlePrefix) {
+        if(titlePrefix == null) titlePrefix = "";
         model.addAttribute("courses", courseService.findByTitleLike(titlePrefix + "%"));
         model.addAttribute("activePage", "courses");
         return "courses";
     }
+
+
+
 
     @Transactional
     @RequestMapping("/{id}")

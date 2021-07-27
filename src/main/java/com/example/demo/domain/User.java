@@ -19,29 +19,6 @@ public class User {
     @ManyToMany(mappedBy = "users")
     private Set<Course> courses;
 
-//    @Column
-//    private String login;
-//
-//    private String password;
-//
-//    private String email;
-//
-//    private String firstName;
-//
-//    private String lastName;
-
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "content_id", referencedColumnName = "id")
-//    private Content avatar;
-
-//    private User updatedUser;
-//
-//    private LocalDateTime updatedTime;
-
-//    private Boolean isAdmin;
-
-
-
     public User() {
     }
 
