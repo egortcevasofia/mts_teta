@@ -5,6 +5,7 @@ import com.example.demo.domain.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,6 +20,6 @@ public class CourseLister {
 
     public List<Course> coursesByAuthor(String name) {
         List<Course> allCourses = repository.findAll();
-        return allCourses.stream().filter(course -> course.getAuthor().equals(name)).collect(Collectors.toList());
+        return Collections.emptyList();
     }
 }

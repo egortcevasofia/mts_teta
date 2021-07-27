@@ -14,7 +14,7 @@ body {
 	flex-direction: column;
 }
 
-								/* user_info */
+/* user_info */
 /* Контейнер */
 form {
 	/*width: 600px; !* Задаём ширину контейнера *!*/
@@ -62,7 +62,7 @@ textarea {
 
 /* Кнопка */
 button {
-	width: 70px; 
+	width: 70px;
 	height: 35px;
 	margin-left: 89%;
 	background-color: #52BE80;
@@ -70,7 +70,7 @@ button {
 	border: none; /* Убираем рамку */
 }
 
-								/* select_course */
+/* select_course */
 /* Подписис всех полей */
 label {
 	margin-bottom: 5px;
@@ -79,12 +79,12 @@ label {
 /* Выпадающий список */
 select {
 	width:100%;
-    height:30px;
-    border:1px solid #ccc;
-    margin-bottom: 10px;
+	height:30px;
+	border:1px solid #ccc;
+	margin-bottom: 10px;
 }
 
-								/* courses */
+/* courses */
 /* Таблица */
 table {
 	margin-top: 20px;
@@ -110,7 +110,7 @@ table button {
 	margin-bottom: 10px;
 }
 
-								/* profile */
+/* profile */
 /* Кнопки на странице профиль */
 .profile-btn {
 	width: 150px;
@@ -127,7 +127,7 @@ input[type="file"] {
 	color: #000;
 }
 
-								/* create_course */
+/* create_course */
 .red {
 	font-size: 0.8em;
 	color: red;
@@ -144,7 +144,7 @@ input[type="file"] {
 	height: 120px;
 }
 
-								/* course_not_found */
+/* course_not_found */
 .error {
 	width: 100%;
 	border: 1px solid #C0392B;
@@ -159,7 +159,6 @@ header {
 	align-content: center;
 	justify-content: center;
 	align-items: center;
-	/*width: 100%;*/
 	background: #ccc;
 	padding: 15px;
 	margin-bottom: 30px;

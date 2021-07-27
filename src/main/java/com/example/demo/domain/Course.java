@@ -4,6 +4,9 @@ import com.example.demo.annotation.TitleCase;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -30,13 +33,16 @@ public class Course {
     @ManyToMany
     private Set<User> users;
 
+
     public Course() {
     }
 
-    public Course(Long id, String author, String title) {
+    public Course(Long id, @NotBlank(message = "Course author has to be filled") String author, @NotBlank(message = "Course title has to be filled") String title, List<Lesson> lessons, Set<User> users) {
         this.id = id;
         this.author = author;
         this.title = title;
+        this.lessons = lessons;
+        this.users = users;
     }
 
     public Long getId() {

@@ -1,6 +1,7 @@
 package com.example.demo.domain;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -12,7 +13,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column
     private String username;
 
@@ -22,8 +22,10 @@ public class User {
     public User() {
     }
 
-    public User(String username) {
+    public User(Long id, String username, Set<Course> courses) {
+        this.id = id;
         this.username = username;
+        this.courses = courses;
     }
 
     public Long getId() {
@@ -48,18 +50,5 @@ public class User {
 
     public void setCourses(Set<Course> courses) {
         this.courses = courses;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return id.equals(user.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
     }
 }

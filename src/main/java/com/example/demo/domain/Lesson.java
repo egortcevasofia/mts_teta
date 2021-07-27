@@ -1,6 +1,8 @@
 package com.example.demo.domain;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "lessons")
@@ -15,17 +17,22 @@ public class Lesson {
 
     @Lob
     @Column
-    private String text;
+    private String description;
 
     @ManyToOne(optional = false)
     private Course course;
 
+
+
+
+
     public Lesson() {
     }
 
-    public Lesson(String title, String text, Course course) {
+    public Lesson(Long id, String title, String description, Course course) {
+        this.id = id;
         this.title = title;
-        this.text = text;
+        this.description = description;
         this.course = course;
     }
 
@@ -45,12 +52,12 @@ public class Lesson {
         this.title = title;
     }
 
-    public String getText() {
-        return text;
+    public String getDescription() {
+        return description;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Course getCourse() {

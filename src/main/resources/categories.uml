@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.categories</OriginalElement>
+  <nodes>
+    <node x="583.0" y="585.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.ratings_courses</node>
+    <node x="343.875" y="820.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.themes_tasks</node>
+    <node x="932.5625" y="476.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_history</node>
+    <node x="666.25" y="146.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.users</node>
+    <node x="900.1875" y="212.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses</node>
+    <node x="770.8965206185569" y="581.2226804123711">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_users</node>
+    <node x="1267.5625" y="575.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.categories</node>
+    <node x="398.0" y="564.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.tasks</node>
+    <node x="756.453947368421" y="820.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_history_users</node>
+    <node x="1065.6644736842104" y="820.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_history_categories</node>
+    <node x="51.0" y="585.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.ratings_users</node>
+    <node x="312.0394736842105" y="223.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.ratings</node>
+    <node x="80.16447368421052" y="820.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.themes_contents</node>
+    <node x="326.4078947368421" y="0.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.contents</node>
+    <node x="207.0" y="542.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.themes</node>
+    <node x="1123.5625" y="553.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.lessons</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.themes_contents" target="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.themes">
+      <point x="38.0" y="-38.0" />
+      <point x="194.16447368421052" y="795.0" />
+      <point x="249.75" y="795.0" />
+      <point x="-42.75" y="81.0" />
+    </edge>
+    <edge source="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_users" target="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.users">
+      <point x="-34.0" y="-38.0" />
+      <point x="810.5625" y="436.0" />
+      <point x="778.25" y="436.0" />
+      <point x="32.0" y="125.0" />
+    </edge>
+    <edge source="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_history_categories" target="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.categories">
+      <point x="60.0" y="-38.0" />
+      <point x="1245.6644736842104" y="795.0" />
+      <point x="1329.5625" y="795.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_users" target="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses">
+      <point x="34.0" y="-38.0" />
+      <point x="878.5625" y="456.0" />
+      <point x="952.3125" y="456.0" />
+      <point x="-17.375" y="59.0" />
+    </edge>
+    <edge source="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.themes_tasks" target="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.themes">
+      <point x="-32.0" y="-38.0" />
+      <point x="375.875" y="795.0" />
+      <point x="335.25" y="795.0" />
+      <point x="42.75" y="81.0" />
+    </edge>
+    <edge source="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_history" target="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.users">
+      <point x="-42.75" y="-147.0" />
+      <point x="975.3125" y="426.0" />
+      <point x="810.25" y="426.0" />
+      <point x="64.0" y="125.0" />
+    </edge>
+    <edge source="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.themes_contents" target="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.contents">
+      <point x="-38.0" y="-38.0" />
+      <point x="118.16447368421052" y="795.0" />
+      <point x="40.5" y="795.0" />
+      <point x="40.5" y="121.0" />
+      <point x="370.4078947368421" y="121.0" />
+      <point x="-44.0" y="48.0" />
+    </edge>
+    <edge source="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.themes_tasks" target="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.tasks">
+      <point x="32.0" y="-38.0" />
+      <point x="439.875" y="795.0" />
+      <point x="480.5" y="795.0" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_history_categories" target="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_history">
+      <point x="-60.0" y="-38.0" />
+      <point x="1125.6644736842104" y="795.0" />
+      <point x="1060.8125" y="795.0" />
+      <point x="42.75" y="147.0" />
+    </edge>
+    <edge source="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_history" target="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses">
+      <point x="42.75" y="-147.0" />
+      <point x="1060.8125" y="456.0" />
+      <point x="987.0625" y="456.0" />
+      <point x="17.375" y="59.0" />
+    </edge>
+    <edge source="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.themes" target="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.users">
+      <point x="0.0" y="-81.0" />
+      <point x="292.5" y="436.0" />
+      <point x="714.25" y="436.0" />
+      <point x="-32.0" y="125.0" />
+    </edge>
+    <edge source="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_history_users" target="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_history">
+      <point x="50.0" y="-38.0" />
+      <point x="906.453947368421" y="795.0" />
+      <point x="975.3125" y="795.0" />
+      <point x="-42.75" y="147.0" />
+    </edge>
+    <edge source="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.ratings_courses" target="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses">
+      <point x="38.0" y="-38.0" />
+      <point x="697.0" y="446.0" />
+      <point x="917.5625" y="446.0" />
+      <point x="-52.125" y="59.0" />
+    </edge>
+    <edge source="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.ratings_users" target="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.ratings">
+      <point x="-34.0" y="-38.0" />
+      <point x="85.0" y="416.0" />
+      <point x="338.0394736842105" y="416.0" />
+      <point x="-26.0" y="48.0" />
+    </edge>
+    <edge source="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.users" target="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.contents">
+      <point x="0.0" y="-125.0" />
+      <point x="746.25" y="121.0" />
+      <point x="458.4078947368421" y="121.0" />
+      <point x="44.0" y="48.0" />
+    </edge>
+    <edge source="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_history_users" target="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.users">
+      <point x="-50.0" y="-38.0" />
+      <point x="806.453947368421" y="795.0" />
+      <point x="746.25" y="795.0" />
+      <point x="0.0" y="125.0" />
+    </edge>
+    <edge source="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.ratings_users" target="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.users">
+      <point x="34.0" y="-38.0" />
+      <point x="153.0" y="426.0" />
+      <point x="682.25" y="426.0" />
+      <point x="-64.0" y="125.0" />
+    </edge>
+    <edge source="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.ratings_courses" target="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.ratings">
+      <point x="-38.0" y="-38.0" />
+      <point x="621.0" y="416.0" />
+      <point x="390.0394736842105" y="416.0" />
+      <point x="26.0" y="48.0" />
+    </edge>
+    <edge source="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.lessons" target="5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses">
+      <point x="0.0" y="-70.0" />
+      <point x="1185.5625" y="446.0" />
+      <point x="1021.8125" y="446.0" />
+      <point x="52.125" y="59.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5251091703056768" x="696.0" y="448.0" />
+  <SelectedNodes>
+    <node>5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_users</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

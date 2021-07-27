@@ -1,0 +1,25 @@
+<h1>Assign course to user</h1>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <title>Create course</title>
+</head>
+
+<form th:method="post" th:action="@{/course/{courseId}/assign(courseId = ${courseId})}">
+
+    <div>
+        <label for="userId">User to assign</label>
+        <select id="userId" name="userId" >
+            <option th:each="user : ${users}"
+                    th:value="${user.id}"
+                    th:text="${user.username}">Username</option>
+        </select>
+    </div>
+
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
