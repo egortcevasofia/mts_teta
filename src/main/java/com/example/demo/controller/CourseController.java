@@ -5,14 +5,22 @@ import com.example.demo.domain.User;
 import com.example.demo.service.CourseService;
 import com.example.demo.service.LessonService;
 import com.example.demo.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.security.Principal;
+import java.util.Collections;
 
 
 @Controller
@@ -22,6 +30,8 @@ public class CourseController {
     private final CourseService courseService;
     private final LessonService lessonService;
     private final UserService userService;
+    private static final Logger logger = LoggerFactory.getLogger(CourseController.class);
+
 
 
     @Autowired
@@ -32,7 +42,10 @@ public class CourseController {
     }
 
     @GetMapping
-    public String courseTable(Model model, @RequestParam(name = "titlePrefix", required = false) String titlePrefix) {
+    public String courseTable(HttpSession session, Model model, @RequestParam(name = "titlePrefix", required = false) String titlePrefix, Principal principal) {
+        if (principal != null) {
+            logger.info("Request from user '{}'", principal.getName());
+        }
         if(titlePrefix == null) titlePrefix = "";
         model.addAttribute("courses", courseService.findByTitleLike(titlePrefix + "%"));
         model.addAttribute("activePage", "courses");
@@ -67,17 +80,28 @@ public class CourseController {
         return "course_form";
     }
 
+    @Secured("ROLE_ADMIN")
     @DeleteMapping("/{id}")
     public String deleteCourse(@PathVariable("id") Long id) {
         courseService.delete(id);
         return "redirect:/course";
     }
 
-    @GetMapping("/{courseId}/assign")
-    public String assignCourse(Model model, @PathVariable Long courseId) {
-        model.addAttribute("users", userService.findUsersNotAssignedToCourse(courseId));
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/{id}/assign")
+    public String assignUserForm(Model model, HttpServletRequest request, @PathVariable("id") Long id) {
+        model.addAttribute("courseId", id);
+        if (request.isUserInRole("ROLE_ADMIN")) {
+            model.addAttribute("users", userService.findUsersNotAssignedToCourse(id));
+        } else {
+            User user = userService.findUserByUsername(request.getRemoteUser());
+            model.addAttribute("users", Collections.singletonList(user));
+        }
         return "assign_course";
     }
+
+
 
     @PostMapping("/{courseId}/assign")
     public String assignUserForm(@PathVariable("courseId") Long courseId,
@@ -99,6 +123,8 @@ public class CourseController {
         courseService.removeUserFromCourse(user,course);
         return "redirect:/course/{courseId}";
     }
+
+    // TODO: 29.07.2021 заменить всех юзеров на юзердто
 
 
 }

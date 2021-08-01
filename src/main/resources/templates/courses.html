@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,8 +46,8 @@
 					<button class="table-button" type="submit">Назначить</button>
 				</form>
 
-				<form th:method="delete" th:action="@{/course/{id}(id = ${course.id})}">
-					<button class="table-button" type="submit">Удалить</button>
+				<form class="inline" sec:authorize="hasRole('ADMIN')" th:method="delete" th:action="@{/course/{id}(id = ${course.id})}">
+					<button type="submit">Delete</button>
 				</form>
 			</td>
 
