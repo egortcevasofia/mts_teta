@@ -7,9 +7,24 @@
     <span th:classappend="${activePage == 'courses'} ? active">
         <a th:href="@{/course}">Courses</a>
     </span>
-	<span th:classappend="${activePage == 'users'} ? active">
-        <a th:href="@{/admin/user/}">User</a>
+<!--	<span th:classappend="${activePage == 'user'} ? active">-->
+<!--        <a th:href="@{/user/}">User</a>-->
+<!--    </span>-->
+
+	<span  th:classappend="${activePage =='user'} ? active" sec:authorize="isAuthenticated()">
+		<a th:href="@{/user}">User</a>
+	</span>
+
+	<span th:classappend="${activePage == 'registration'} ? active" sec:authorize="!isAuthenticated()">
+        <a th:href="@{/user/registration}">Registration</a>
     </span>
+
+	<span  th:classappend="${activePage =='user'} ? active" sec:authorize="hasRole('ADMIN')">
+		<a th:href="@{/user/findUser}">Find User</a>
+	</span>
+
+
+
 
 	<form class="float-right" th:method="post" th:action="@{/logout}">
 		<a class="float-right" sec:authorize="!isAuthenticated()" th:href="@{/login}">

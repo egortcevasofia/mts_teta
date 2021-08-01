@@ -10,7 +10,8 @@
 	<title>Create course</title>
 </head>
 <body>
-<form th:object="${user}" th:method="post" th:action="@{/admin/user}">
+<header th:replace="fragments/header :: header"></header>
+<form th:object="${user}" th:method="post" th:action="@{/user}">
 
 
 	<div>
@@ -30,6 +31,8 @@
 			empty</small>
 	</div>
 
+
+	<span sec:authorize="hasRole('ADMIN')">
 	<div class="form-group">
 		<label for="roles">Roles</label>
 		<select multiple class="form-control" id="roles" th:field="*{roles}" required>
@@ -39,6 +42,9 @@
 					th:selected="${user.roles?.contains(role)}"></option>
 		</select>
 	</div>
+	</span>
+
+
 			<button>Создать</button> <!-- Создаём кнопку -->
 		</form>
 </body>

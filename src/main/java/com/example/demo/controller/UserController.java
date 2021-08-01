@@ -3,45 +3,78 @@ package com.example.demo.controller;
 import com.example.demo.dao.RoleRepository;
 import com.example.demo.domain.Role;
 import com.example.demo.dto.UserDto;
+import com.example.demo.dto.UserMapper;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
-import java.security.Principal;
 import java.util.List;
 
 
 @Controller
-@RequestMapping("admin/user")
+@RequestMapping("/user")
 public class UserController {
-    RoleRepository roleRepository;
-    UserService userService;
+    private RoleRepository roleRepository;
+    private UserService userService;
+    private UserMapper userMapper;
 
 
     @Autowired
-    public UserController(RoleRepository roleRepository, UserService userService) {
+    public UserController(RoleRepository roleRepository, UserService userService, UserMapper userMapper) {
         this.roleRepository = roleRepository;
         this.userService = userService;
+        this.userMapper = userMapper;
     }
-//    @GetMapping
-//    public String courseTable( Model model, @RequestParam(name = "id", required = false) Long id) {
-//        //if(id == null) return  "redirect:/user";
-//        model.addAttribute("user", userService.findUserById(id));
-//        return "user_form";
-//    }
 
 
     @Transactional
-    @RequestMapping("/{id}")
+    @GetMapping("/admin/{id}")
     public String userForm(Model model, @PathVariable("id") Long id) {
         model.addAttribute("user", userService.findUserById(id));
         return "user_form";
+    }
+
+    @GetMapping("/findUser")
+    public String userTable(Model model, HttpServletRequest request) {
+
+        model.addAttribute("users", this.userService.findAll());
+        return "users";
+    }
+
+    @GetMapping
+    public String userForm(Model model, HttpServletRequest request) {
+        model.addAttribute("user", this.userService.findUserByUsername(request.getRemoteUser()));
+        return "user_form";
+    }
+
+
+    @PostMapping("/registration")
+    public String submitUserForm(@Valid @ModelAttribute("user") UserDto user,
+                                 BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "registration_form";
+        }
+        userService.saveStudent(user);
+        return "requestFormUserRegistration";
+    }
+
+    @GetMapping("/registration")
+    public String registrationForm(Model model) {
+        model.addAttribute("user", new UserDto());
+        return "registration_form";
+    }
+
+    @DeleteMapping({"/{id}"})
+    public String deleteUser(HttpServletRequest request, @PathVariable("id") Long id) {
+            this.userService.deleteById(id);
+            return "redirect:/user/findUser";
     }
 
     @ModelAttribute("roles")
@@ -49,14 +82,8 @@ public class UserController {
         return roleRepository.findAll();
     }
 
-    @PostMapping
-    public String submitUserForm(@Valid @ModelAttribute("user") UserDto user,
-                                 BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "user_form";
-        }
 
-        userService.save(user);
-        return "redirect:/user";
-    }
+
+
+
 }
