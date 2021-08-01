@@ -16,6 +16,7 @@
 
 	<div>
 		<center><h1>Информация о пользователе</h1></center>
+		<input type="hidden" th:field="*{id}">
 		<label for="username">Имя</label>
 		<input type="text" id="username" th:field="*{username}">
 		<small class="validation-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name shouldn't
