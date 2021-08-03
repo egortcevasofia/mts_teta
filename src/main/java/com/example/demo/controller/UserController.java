@@ -5,6 +5,7 @@ import com.example.demo.domain.Role;
 import com.example.demo.dto.UserDto;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,7 +33,7 @@ public class UserController {
 
     }
 
-
+    @Secured("ROLE_ADMIN")
     @GetMapping("/findUser")
     public String userTable(Model model, HttpServletRequest request) {
         model.addAttribute("users", this.userService.findAll());
@@ -81,6 +82,7 @@ public class UserController {
         return "registration_form";
     }
 
+    @Secured("ROLE_ADMIN")
     @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         this.userService.deleteById(id);

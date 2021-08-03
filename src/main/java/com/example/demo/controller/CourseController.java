@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.domain.Course;
 import com.example.demo.domain.User;
-import com.example.demo.dto.UserMapper;
 import com.example.demo.service.CourseService;
 import com.example.demo.service.LessonService;
 import com.example.demo.service.UserService;
