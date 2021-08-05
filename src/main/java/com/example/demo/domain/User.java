@@ -35,10 +35,10 @@ public class User {
     }
 
 
-    public User(Long id, String username, String encode, Set<Role> roles) {
+    public User(Long id, String username, String password, Set<Role> roles) {
         this.id = id;
         this.username = username;
-        this.password = encode;
+        this.password = password;
         this.roles = roles;
     }
 

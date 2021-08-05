@@ -17,6 +17,8 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.List;
 
+import static com.example.demo.common.Constant.RoleName.ROLE_ADMIN;
+
 
 @Controller
 @RequestMapping("/user")
@@ -30,12 +32,11 @@ public class UserController {
     public UserController(RoleRepository roleRepository, UserService userService) {
         this.roleRepository = roleRepository;
         this.userService = userService;
-
     }
 
-    @Secured("ROLE_ADMIN")
+    @Secured(ROLE_ADMIN)
     @GetMapping("/findUser")
-    public String userTable(Model model, HttpServletRequest request) {
+    public String userTable(Model model) {
         model.addAttribute("users", this.userService.findAll());
         return "users";
     }
@@ -55,14 +56,14 @@ public class UserController {
     }
 
 
-    @PostMapping//апдэйт, Если есть с таким же айди то смердживаетб если нет то создает новый
+    @PostMapping
     public String updateUserForm(@Valid @ModelAttribute("user") UserDto userDto,
                                  BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "user_form";
         }
         userService.updateUser(userDto);
-        return "redirect:/user/findUser";
+        return "redirect:/user/findUser";//здесь нуэ
     }
 
 
@@ -82,7 +83,7 @@ public class UserController {
         return "registration_form";
     }
 
-    @Secured("ROLE_ADMIN")
+    @Secured(ROLE_ADMIN)
     @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         this.userService.deleteById(id);
