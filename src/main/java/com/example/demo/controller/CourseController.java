@@ -22,6 +22,8 @@ import javax.validation.Valid;
 import java.security.Principal;
 import java.util.Collections;
 
+import static com.example.demo.common.Constant.RoleName.ROLE_ADMIN;
+
 
 @Controller
 @RequestMapping("/course")
@@ -80,7 +82,7 @@ public class CourseController {
         return "course_form";
     }
 
-    @Secured("ROLE_ADMIN")
+    @Secured(ROLE_ADMIN)
     @DeleteMapping("/{id}")
     public String deleteCourse(@PathVariable("id") Long id) {
         courseService.delete(id);

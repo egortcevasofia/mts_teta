@@ -4,7 +4,6 @@ import com.example.demo.dao.UserRepository;
 import com.example.demo.domain.Role;
 import com.example.demo.domain.User;
 import com.example.demo.dto.UserDto;
-import com.example.demo.dto.UserMapper;
 import com.example.demo.exception.NotFoundException;
 import com.example.demo.exception.NotPossibleDeleteException;
 import com.example.demo.exception.UserAlreadyExistsException;
@@ -14,6 +13,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static com.example.demo.common.Constant.RoleName.ROLE_STUDENT;
 
 @Service
 public class UserService {
@@ -48,13 +49,13 @@ public class UserService {
     }
 
     public void saveStudent(UserDto userDto) {
-        if (userRepository.findUserByUsername(userDto.getUsername()).isPresent()) {
+        if (userRepository.existsByUsername(userDto.getUsername())) {
             throw new UserAlreadyExistsException();
         }
         userRepository.save(new User(userDto.getId(),
                 userDto.getUsername(),
                 encoder.encode(userDto.getPassword()),
-                new HashSet<Role>(Collections.singletonList(roleService.getByName("ROLE_STUDENT")))
+                new HashSet<Role>(Collections.singletonList(roleService.getByName(ROLE_STUDENT)))
         ));
     }
 
@@ -67,7 +68,7 @@ public class UserService {
     }
 
     public void updateUser(UserDto userDto) {
-        if (userRepository.findById(userDto.getId()).isEmpty()) {
+        if (!userRepository.existsById(userDto.getId())) {
             throw new NotFoundException();
         }
 
