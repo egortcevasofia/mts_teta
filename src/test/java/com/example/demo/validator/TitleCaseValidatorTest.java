@@ -1,6 +1,5 @@
-package com.example.demo;
+package com.example.demo.validator;
 
-import com.example.demo.validator.TitleCaseValidator;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

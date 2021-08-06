@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/style.css}">
+	<title>Create course</title>
+</head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+<form th:object="${user}" th:method="post" th:action="@{/user}">
+
+
+	<div>
+		<center><h1>Информация о пользователе</h1></center>
+		<input type="hidden" th:field="*{id}">
+		<label for="username">Имя</label>
+		<input type="text" id="username" th:field="*{username}">
+		<small class="validation-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name shouldn't
+			be
+			empty</small>
+	</div>
+
+	<div>
+		<label for="password">Password</label>
+		<input type="password" id="password" th:field="*{password}">
+		<small class="validation-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password
+			shouldn't be
+			empty</small>
+	</div>
+
+
+	<span sec:authorize="hasRole('ADMIN')">
+	<div class="form-group">
+		<label for="roles">Roles</label>
+		<select multiple class="form-control" id="roles" th:field="*{roles}" required>
+			<option th:each="role : ${roles}"
+					th:text="${role.name}"
+					th:value="${role.id}"
+					th:selected="${user.roles?.contains(role)}"></option>
+		</select>
+	</div>
+	</span>
+
+
+			<button>Создать</button> <!-- Создаём кнопку -->
+		</form>
+</body>
+</html>

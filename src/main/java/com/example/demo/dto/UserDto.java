@@ -1,52 +1,49 @@
-package com.example.demo.domain;
+package com.example.demo.dto;
+
+import com.example.demo.domain.Course;
+import com.example.demo.domain.Role;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Objects;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
-@Entity
-@Table(name = "users")
-public class User {
+public class UserDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+
+    @NotNull
     private String username;
 
-    @ManyToMany(mappedBy = "users")
     private Set<Course> courses;
 
-    @ManyToMany
     private Set<Role> roles;
 
-    @Column
+    @NotNull
     private String password;
 
-    public User() {
+    public UserDto() {
     }
 
-    public User(Long id, String username, Set<Course> courses) {
+    public UserDto(Long id, String username, Set<Course> courses, Set<Role> roles, String password) {
         this.id = id;
         this.username = username;
         this.courses = courses;
+        this.roles = roles;
+        this.password = password;
     }
 
+    public UserDto(Long id, String username, String s, Set<Role> roles) {
+        this.id = id;
+        this.username = username;
+        this.roles = roles;
+    }
 
-    public User(Long id, String username, String password, Set<Role> roles) {
+    public UserDto(Long id, String username, String password) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.roles = roles;
     }
 
-    public User(String username, String password, Set<Role> roles) {
-        this.username = username;
-        this.roles = roles;
-        this.password = password;
-    }
 
 
 
