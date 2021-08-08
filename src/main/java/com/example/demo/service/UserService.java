@@ -42,17 +42,20 @@ public class UserService {
     }
 
     public void deleteById(long id) {
-        if (!userRepository.findById(id).orElseThrow(NotFoundException::new).getCourses().isEmpty()) {
+        User userForDelete = userRepository.findById(id).orElseThrow(NotFoundException::new);
+
+        if (!userForDelete.getCourses().isEmpty()) {
             throw new NotPossibleDeleteException();
+        } else {
+            userRepository.deleteById(id);
         }
-        userRepository.deleteById(id);
     }
 
-    public void saveStudent(UserDto userDto) {
+    public User saveStudent(UserDto userDto) {
         if (userRepository.existsByUsername(userDto.getUsername())) {
             throw new UserAlreadyExistsException();
         }
-        userRepository.save(new User(userDto.getId(),
+        return userRepository.save(new User(userDto.getId(),
                 userDto.getUsername(),
                 encoder.encode(userDto.getPassword()),
                 new HashSet<Role>(Collections.singletonList(roleService.getByName(ROLE_STUDENT)))
@@ -67,12 +70,12 @@ public class UserService {
         return userRepository.findUserByUsername(username).orElseThrow(NotFoundException::new);
     }
 
-    public void updateUser(UserDto userDto) {
+    public User updateUser(UserDto userDto) {
         if (!userRepository.existsById(userDto.getId())) {
             throw new NotFoundException();
         }
 
-        userRepository.save(new User(userDto.getId(),
+        return userRepository.save(new User(userDto.getId(),
                 userDto.getUsername(),
                 encoder.encode(userDto.getPassword()),
                 userDto.getRoles()
@@ -80,5 +83,5 @@ public class UserService {
 
     }
 
-
 }
+

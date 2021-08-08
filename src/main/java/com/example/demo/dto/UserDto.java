@@ -32,7 +32,7 @@ public class UserDto {
         this.password = password;
     }
 
-    public UserDto(Long id, String username, String s, Set<Role> roles) {
+    public UserDto(Long id, String username, Set<Role> roles) {
         this.id = id;
         this.username = username;
         this.roles = roles;
@@ -44,7 +44,11 @@ public class UserDto {
         this.password = password;
     }
 
-
+    public UserDto(Long id, String username, String s, Set<Role> roles) {
+        this.id = id;
+        this.username = username;
+        this.roles = roles;
+    }
 
 
     public Long getId() {

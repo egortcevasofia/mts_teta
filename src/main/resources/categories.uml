@@ -6,18 +6,18 @@
     <node x="583.0" y="585.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.ratings_courses</node>
     <node x="343.875" y="820.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.themes_tasks</node>
     <node x="932.5625" y="476.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_history</node>
-    <node x="666.25" y="146.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.users</node>
+    <node x="1267.5625" y="575.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.categories</node>
     <node x="900.1875" y="212.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses</node>
     <node x="770.8965206185569" y="581.2226804123711">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_users</node>
-    <node x="1267.5625" y="575.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.categories</node>
     <node x="398.0" y="564.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.tasks</node>
+    <node x="312.0394736842105" y="223.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.ratings</node>
     <node x="756.453947368421" y="820.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_history_users</node>
     <node x="1065.6644736842104" y="820.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_history_categories</node>
-    <node x="51.0" y="585.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.ratings_users</node>
-    <node x="312.0394736842105" y="223.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.ratings</node>
-    <node x="80.16447368421052" y="820.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.themes_contents</node>
     <node x="326.4078947368421" y="0.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.contents</node>
+    <node x="80.16447368421052" y="820.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.themes_contents</node>
+    <node x="51.0" y="585.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.ratings_users</node>
     <node x="207.0" y="542.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.themes</node>
+    <node x="666.25" y="146.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.users</node>
     <node x="1123.5625" y="553.0">5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.lessons</node>
   </nodes>
   <notes />
@@ -139,7 +139,7 @@
       <point x="52.125" y="59.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.5251091703056768" x="696.0" y="448.0" />
+  <settings layout="Hierarchic Group" zoom="0.5152838427947598" x="696.0" y="448.0" />
   <SelectedNodes>
     <node>5c2cf5ba-c5e6-4333-9e75-e21886447b24.TABLE:courses_app.public.courses_users</node>
   </SelectedNodes>

@@ -34,11 +34,27 @@ public class Course {
     public Course() {
     }
 
+    public Course(Long id) {
+        this.id = id;
+    }
+
+    public Course(Long id, @NotBlank(message = "Course author has to be filled") String author, @NotBlank(message = "Course title has to be filled") String title) {
+        this.id = id;
+        this.author = author;
+        this.title = title;
+    }
+
     public Course(Long id, @NotBlank(message = "Course author has to be filled") String author, @NotBlank(message = "Course title has to be filled") String title, List<Lesson> lessons, Set<User> users) {
         this.id = id;
         this.author = author;
         this.title = title;
         this.lessons = lessons;
+        this.users = users;
+    }
+
+    public Course(Long id, @NotBlank(message = "Course author has to be filled") String author, Set<User> users) {
+        this.id = id;
+        this.author = author;
         this.users = users;
     }
 
