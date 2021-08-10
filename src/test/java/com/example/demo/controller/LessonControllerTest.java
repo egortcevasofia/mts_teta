@@ -24,7 +24,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
-@AutoConfigureMockMvc
 @WebMvcTest(LessonController.class)
 @ContextHierarchy({
         @ContextConfiguration(classes = MappersTestConfig.class)
