@@ -20,9 +20,9 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class UserServiceTest {
@@ -60,16 +60,24 @@ public class UserServiceTest {
         when(userRepositoryMock.findById(1L))
                 .thenReturn(Optional.of(new User(1L, "Вася", "123", new HashSet<>())));
         assertEquals("Вася", userService.findUserById(1L).getUsername());
-        assertThrows(NotFoundException.class, () -> userService.findUserById(2L));
     }
+
+//    @Test
+//    void findUserByIdException() {
+//        assertThrows(NotFoundException.class, () -> userService.findUserById(2L));
+//    }
 
 
     @Test
     void deleteById() {
         when(userRepositoryMock.findById(1L))
-                .thenReturn(Optional.of(new User(1L, "Вася", "123", new HashSet<>())));
+                .thenReturn(Optional.of(new User(1L, "Вася", new HashSet<>())));
         userService.deleteById(1L);
         Mockito.verify(userRepositoryMock, Mockito.times(1)).deleteById(1L);
+    }
+
+    @Test
+    void deleteByIdException() {
         assertThrows(NotFoundException.class, () -> userService.deleteById(2L));
     }
 
@@ -101,8 +109,7 @@ public class UserServiceTest {
 
     @Test
     void updateUser() {
-        when(userRepositoryMock.findById(any()))
-                .thenReturn(Optional.of(new User(1L, "Вася", "123", new HashSet<>())));
+        when(userRepositoryMock.existsById(any())).thenReturn(true);
         when(userRepositoryMock.save(any(User.class))).thenReturn(new User(1L, "Вася", "123", new HashSet<>()));
         User actualUser = userService.updateUser(new UserDto(1L, "Вася", "123"));
         assertEquals("Вася", actualUser.getUsername());
