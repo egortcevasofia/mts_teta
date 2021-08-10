@@ -62,10 +62,10 @@ public class UserServiceTest {
         assertEquals("Вася", userService.findUserById(1L).getUsername());
     }
 
-//    @Test
-//    void findUserByIdException() {
-//        assertThrows(NotFoundException.class, () -> userService.findUserById(2L));
-//    }
+    @Test
+    void findUserByIdException() {
+        assertThrows(NotFoundException.class, () -> userService.findUserById(2L));
+    }
 
 
     @Test

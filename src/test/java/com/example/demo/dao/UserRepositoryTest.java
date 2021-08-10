@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 @RunWith(SpringRunner.class)
-//@DataJpaTest
+@DataJpaTest
 @SpringBootTest
 public class UserRepositoryTest {
 
