@@ -29,8 +29,8 @@ public class CourseService {
                 .orElseThrow(NotFoundException::new);
     }
 
-    public void save(Course course) {
-        courseRepository.save(course);
+    public Course save(Course course) {
+        return courseRepository.save(course);
     }
 
     public void delete(long id) {

@@ -1,5 +1,7 @@
 package com.example.demo.dto;
 
+import java.util.Objects;
+
 public class LessonDto {
 
     private Long id;
@@ -22,6 +24,12 @@ public class LessonDto {
         this.title = title;
         this.text = text;
         this.courseId = courseId;
+    }
+
+    public LessonDto(Long id, String title) {
+        this.id = id;
+        this.title = title;
+
     }
 
     public LessonDto(Long id, String title, Long courseId) {
@@ -60,5 +68,21 @@ public class LessonDto {
 
     public void setCourseId(Long courseId) {
         this.courseId = courseId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof LessonDto)) return false;
+        LessonDto lessonDto = (LessonDto) o;
+        return Objects.equals(getId(), lessonDto.getId()) &&
+                Objects.equals(getTitle(), lessonDto.getTitle()) &&
+                Objects.equals(getText(), lessonDto.getText()) &&
+                Objects.equals(getCourseId(), lessonDto.getCourseId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getTitle(), getText(), getCourseId());
     }
 }

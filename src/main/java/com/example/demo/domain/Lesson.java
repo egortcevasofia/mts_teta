@@ -24,8 +24,6 @@ public class Lesson {
 
 
 
-
-
     public Lesson() {
     }
 
@@ -34,6 +32,11 @@ public class Lesson {
         this.title = title;
         this.description = description;
         this.course = course;
+    }
+
+    public Lesson(Long id, String title) {
+        this.id = id;
+        this.title = title;
     }
 
     public Long getId() {

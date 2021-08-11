@@ -58,11 +58,12 @@ public class CourseController {
 
 
     @Transactional
-    @RequestMapping("/{id}")
+    @GetMapping("/{id}")
     public String courseForm(Model model, @PathVariable("id") Long id) {
-        model.addAttribute("course", courseService.findById(id));
+        Course course = courseService.findById(id);
+        model.addAttribute("course", course);
         model.addAttribute("lessons",lessonService.findAllForLessonIdWithoutText(id));
-        model.addAttribute("users",courseService.findById(id).getUsers());
+        model.addAttribute("users",course.getUsers());
         return "course_form";
     }
 
