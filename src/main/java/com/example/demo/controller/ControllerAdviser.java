@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.exception.InternalServerError;
 import com.example.demo.exception.NotFoundException;
 import com.example.demo.exception.NotPossibleDeleteException;
 import com.example.demo.exception.UserAlreadyExistsException;
@@ -31,4 +32,16 @@ public class ControllerAdviser {
         modelAndView.setStatus(HttpStatus.BAD_REQUEST);
         return modelAndView;
     }
+
+    @ExceptionHandler(InternalServerError.class)
+    public ModelAndView InternalServerErrorExceptionHandler(InternalServerError ex) {
+        ModelAndView modelAndView = new ModelAndView("user_already_exists");
+        modelAndView.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+        return modelAndView;
+    }
+
+
+
+
+
 }

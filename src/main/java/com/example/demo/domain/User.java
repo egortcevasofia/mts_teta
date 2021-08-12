@@ -25,6 +25,10 @@ public class User {
     @Column
     private String password;
 
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private AvatarImage avatarImage;
+
     public User() {
     }
 

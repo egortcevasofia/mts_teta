@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -25,7 +24,6 @@ import static com.example.demo.common.Constant.RoleName.ROLE_ADMIN;
 public class UserController {
     private final RoleRepository roleRepository;
     private final UserService userService;
-
 
 
     @Autowired

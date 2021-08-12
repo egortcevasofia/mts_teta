@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <title>Profile</title>
+</head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+
+<form th:object="${user}" th:method="post" th:action="@{/user}">
+
+    <div>
+        <center><h1>Информация о пользователе</h1></center>
+        <input type="hidden" th:field="*{id}">
+        <label for="username">Имя</label>
+        <input type="text" id="username" th:field="*{username}">
+        <small class="validation-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name shouldn't
+            be
+            empty</small>
+    </div>
+
+    <button>Обновить</button> <!-- Создаём кнопку -->
+</form>
+
+<form th:method="post" th:action="@{/profile/avatar}" enctype="multipart/form-data">
+    <div>
+        <label for="avatar">Select avatar picture to upload</label>
+        <input id="avatar" name="avatar" type="file"/>
+    </div>
+    <div>
+        <button>Update avatar</button>
+    </div>
+</form>
+
+
+</body>
+</html>
