@@ -14,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -68,6 +67,5 @@ public class AvatarController {
     public ResponseEntity<Void> notFoundExceptionHandler(NotFoundException ex) {
         return ResponseEntity.notFound().build();
     }
-
 
 }
