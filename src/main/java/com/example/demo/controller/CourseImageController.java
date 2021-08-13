@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Course;
+import com.example.demo.exception.ImageNotFoundException;
 import com.example.demo.exception.InternalServerError;
-import com.example.demo.exception.NotFoundException;
 import com.example.demo.service.CourseCoverStorageService;
 import com.example.demo.service.CourseService;
 import org.slf4j.Logger;
@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+;
 
 
 @Controller
@@ -48,17 +50,13 @@ public class CourseImageController {
     @ResponseBody
     public ResponseEntity<byte[]> avatarImage(@PathVariable("id") Long id) {
         String contentType = courseCoverStorageService.getContentTypeByCourseId(id)
-                .orElseThrow(NotFoundException::new);
+                .orElseThrow(ImageNotFoundException::new);
         byte[] data = courseCoverStorageService.getCourseImageByCourseId(id)
-                .orElseThrow(NotFoundException::new);
+                .orElseThrow(ImageNotFoundException::new);
         return ResponseEntity
                 .ok()
                 .contentType(MediaType.parseMediaType(contentType))
                 .body(data);
     }
 
-    @ExceptionHandler
-    public ResponseEntity<Void> notFoundExceptionHandler(NotFoundException ex) {
-        return ResponseEntity.notFound().build();
-    }
 }

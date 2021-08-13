@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
+import com.example.demo.exception.ImageNotFoundException;
 import com.example.demo.exception.InternalServerError;
-import com.example.demo.exception.NotFoundException;
 import com.example.demo.service.AvatarStorageService;
 import com.example.demo.service.UserService;
 import org.slf4j.Logger;
@@ -54,18 +54,15 @@ public class AvatarController {
     @ResponseBody
     public ResponseEntity<byte[]> avatarImage(Authentication auth) {
         String contentType = avatarStorageService.getContentTypeByUser(auth.getName())
-                .orElseThrow(NotFoundException::new);
+                .orElseThrow(ImageNotFoundException::new);
         byte[] data = avatarStorageService.getAvatarImageByUser(auth.getName())
-                .orElseThrow(NotFoundException::new);
+                .orElseThrow(ImageNotFoundException::new);
         return ResponseEntity
                 .ok()
                 .contentType(MediaType.parseMediaType(contentType))
                 .body(data);
     }
 
-    @ExceptionHandler
-    public ResponseEntity<Void> notFoundExceptionHandler(NotFoundException ex) {
-        return ResponseEntity.notFound().build();
-    }
+
 
 }

@@ -1,10 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.exception.InternalServerError;
-import com.example.demo.exception.NotFoundException;
-import com.example.demo.exception.NotPossibleDeleteException;
-import com.example.demo.exception.UserAlreadyExistsException;
+import com.example.demo.exception.*;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,8 +38,10 @@ public class ControllerAdviser {
         return modelAndView;
     }
 
-
-
+    @ExceptionHandler
+    public ResponseEntity<Void> notFoundExceptionHandler(ImageNotFoundException ex) {
+        return ResponseEntity.notFound().build();
+    }
 
 
 }
