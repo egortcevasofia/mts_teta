@@ -1,9 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.exception.NotFoundException;
-import com.example.demo.exception.NotPossibleDeleteException;
-import com.example.demo.exception.UserAlreadyExistsException;
+import com.example.demo.exception.*;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,4 +30,18 @@ public class ControllerAdviser {
         modelAndView.setStatus(HttpStatus.BAD_REQUEST);
         return modelAndView;
     }
+
+    @ExceptionHandler(InternalServerError.class)
+    public ModelAndView InternalServerErrorExceptionHandler(InternalServerError ex) {
+        ModelAndView modelAndView = new ModelAndView("user_already_exists");
+        modelAndView.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+        return modelAndView;
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<Void> notFoundExceptionHandler(ImageNotFoundException ex) {
+        return ResponseEntity.notFound().build();
+    }
+
+
 }

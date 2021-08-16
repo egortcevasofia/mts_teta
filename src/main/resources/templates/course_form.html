@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,18 +8,28 @@
 </head>
 <body>
 <header th:replace="fragments/header :: header"></header>
-<div class="block">
-    <h1>Создать курс</h1>
-</div>
-<div class="block">
-    <img src="" , title="course pic">
-</div>
+
+<form th:object="${course}" th:method="post" th:action="@{/courseprofile/cover}" enctype="multipart/form-data">
+    <div>
+        <input type="hidden" th:field="*{id}">
+        <img th:src="@{/courseprofile/cover/{id}(id= ${course.id})}" alt="Course cover" width="96">
+    </div>
+    <div sec:authorize="hasRole('ADMIN')">
+        <input type="hidden" th:field="*{id}">
+        <label for="cover">Select cover picture to upload</label>
+        <input id="cover" name="cover" type="file"/>
+        <button>Update cover</button>
+    </div>
+</form>
+
 <form th:object="${course}" th:method="post" th:action="@{/course}">
     <div class="block">
+        <h1>Создать курс</h1>
+    </div>
+
+    <div class="block">
         <input type="hidden" th:field="*{id}">
-        <label for="pic">Выберите обложку курса</label>
-        <input type="file" name="pic">
-        <button class="submit-button">Обновить</button>
+
         <label for="course-name">Название:</label>
         <input type="text" name="course-name" th:field="*{title}">
         <small class="hint" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
