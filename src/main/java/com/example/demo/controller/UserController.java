@@ -47,6 +47,7 @@ public class UserController {
 
 
     @Transactional
+    @Secured(ROLE_ADMIN)
     @GetMapping("/admin/{id}")
     public String userForm(Model model, @PathVariable("id") Long id) {
         model.addAttribute("user", userService.findUserById(id));
